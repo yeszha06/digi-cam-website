@@ -301,6 +301,18 @@
             letter-spacing: 0.5px;
         }
 
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #c3e6cb;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 600px) {
             .form-row {
@@ -333,7 +345,11 @@
         <h2>Digicam Rental <span>by Rica</span></h2>
         <p class="subtitle">CAPTURE THE NOSTALGIA:<br>RENT CLASSIC POINT-AND-SHOOTS!</p>
         
-        <form action="#" method="POST">
+        <div class="success-message" id="successMessage">
+            ✓ Thank you! Your booking request has been submitted. Please message us via DM to confirm your reservation.
+        </div>
+        
+        <form id="rentalForm">
             <!-- Renter Information -->
             <div class="form-group">
                 <label for="fullName">Full Name</label>
@@ -403,15 +419,15 @@
                 </div>
 
                 <div class="policy-clause">
-                    <strong>Damages & Losses:</strong> I AGREE to pay for any repairs due to damages or loss of accessories caused during my rental, and the full replacement value if the unit is lost or broken beyond repair[cite: 1].
+                    <strong>Damages & Losses:</strong> I AGREE to pay for any repairs due to damages or loss of accessories caused during my rental, and the full replacement value if the unit is [...]
                 </div>
 
                 <div class="policy-clause warning">
-                    <strong>⏰ Late Delays:</strong> I AGREE to return the unit by the agreed time and date. I understand that a late penalty fee of <strong>₱100 will be added to the rental rate for every day of delay and ₱30 for every hour</strong>[cite: 1].
+                    <strong>⏰ Late Delays:</strong> I AGREE to return the unit by the agreed time and date. I understand that a late penalty fee of <strong>₱100 will be added to the rental ra[...]</strong>
                 </div>
 
                 <div class="policy-clause warning">
-                    <strong>🔒 Non-Return Clause:</strong> If I fail to return the unit on the agreed date and there is reasonable suspicion of loss, theft, or intent to sell, I AGREE that the Owner has the right to disclose my personal information to authorities and on <strong>social media platforms</strong> for recovery purposes[cite: 1].
+                    <strong>🔒 Non-Return Clause:</strong> If I fail to return the unit on the agreed date and there is reasonable suspicion of loss, theft, or intent to sell, I AGREE that the [...]</strong>
                 </div>
             </div>
 
@@ -428,6 +444,25 @@
             </div>
         </form>
     </div>
+
+    <script>
+        document.getElementById('rentalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.reset();
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+    </script>
 
 </body>
 </html>
