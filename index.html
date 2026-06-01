@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Digicam Rental by Rica</title>
+    <style>
+        /* Beige & Earthy Tropical Aesthetic Theme */
+        :root {
+            --bg-creme: #fdfaf4;       /* Warm linen background */
+            --bg-card: #f5eedf;        /* Soft sand container tone */
+            --text-dark: #2c251e;      /* Elegant deep sepia-charcoal */
+            --text-muted: #7a6e60;     /* Muted vintage-earth tone */
+            --accent-terracotta: #b86b4d; /* Soft clay accent color */
+            --border-line: #e6dcce;    /* Soft dividing lines */
+            --alert-red: #a44a39;      /* Vintage rust red for crucial warnings */
+        }
+
+        body {
+            font-family: 'Courier New', Courier, Georgia, serif;
+            background-color: var(--bg-creme);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Clean Minimalist Header */
+        header {
+            background-color: rgba(253, 250, 244, 0.9);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-terracotta);
+            font-style: italic;
+            text-transform: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-terracotta);
+        }
+
+ 
+        /* Hero / Introduction Display */
+        .hero {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 70px 20px 40px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-terracotta);
+            margin-bottom: 5px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+      /* Hero Images Container */
+.hero-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 45px;
+    padding: 10px 20px;
+}
+
+/* Portrait Image Cards */
+.hero-img {
+    width: 100%;
+    max-width: 170px;     /* Forces a portrait container width */
+    height: 270px;        /* Taller height ensures a standard vertical/portrait aspect ratio */
+    object-fit: cover;    /* Crops elegantly without squeezing the images */
+    background-color: #ffffff;
+    padding: 12px 12px 35px 12px; /* Bottom heavy border mimicking old polaroid prints */
+    border: 1px solid var(--border-line);
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(44, 37, 30, 0.08);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
+}
+
+/* Organic, imperfect rotations for that vintage travel vibe */
+.hero-img:nth-child(1) { transform: rotate(-3deg) translateY(4px); }
+.hero-img:nth-child(2) { transform: rotate(1.5deg) translateY(-8px); }
+.hero-img:nth-child(3) { transform: rotate(-1deg) translateY(0px); }
+.hero-img:nth-child(4) { transform: rotate(4deg) translateY(6px); }
+.hero-img:nth-child(5) { transform: rotate(-2deg) translateY(-4px); }
+
+/* Hover Zoom Effect */
+.hero-img:hover {
+    transform: scale(1.12) rotate(0deg) translateY(-12px) !important;
+    z-index: 10;
+    box-shadow: 0 16px 32px rgba(44, 37, 30, 0.18);
+}
+
+/* Responsive Scaling for Mobile devices */
+@media (max-width: 600px) {
+    .hero-images-container {
+        gap: 15px;
+    }
+    .hero-img {
+        max-width: 135px;
+        height: 210px;
+        padding: 8px 8px 24px 8px;
+    }
+}
+
+        /* General Layout Base */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 40px 0;
+        }
+
+        section h2.section-title {
+            font-family: Georgia, serif;
+            font-size: 26px;
+            font-weight: normal;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Camera Catalog Grid */
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .camera-card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border-line);
+            border-radius: 28px;
+            overflow: hidden;
+            padding: 30px 25px;
+            width: 100%;
+            max-width: 360px;
+            box-sizing: border-box;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .camera-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-terracotta);
+        }
+
+        .camera-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .camera-brand {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 0 0 5px 0;
+        }
+
+        .camera-title {
+            font-family: Georgia, serif;
+            font-size: 24px;
+            margin: 0;
+            color: var(--text-dark);
+            font-weight: normal;
+        }
+
+        .camera-img-box {
+            background-color: rgba(253, 250, 244, 0.6);
+            border: 1px solid var(--border-line);
+            border-radius: 18px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .camera-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .camera-specs {
+            margin: 0 0 auto 0;
+            padding: 0 5px;
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .camera-specs li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Footer Elements within the Cards */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px dashed var(--border-line);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .price-tag {
+            font-family: Georgia, serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .price-tag span {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .btn-rent {
+            background-color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+            color: var(--bg-creme);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-rent:hover {
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        /* Rental Rules, Inclusions, and Terms Panel */
+        .info-panel {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border-line);
+            border-radius: 28px;
+            padding: 40px;
+            max-width: 780px;
+            margin: 30px auto 0 auto;
+            box-sizing: border-box;
+        }
+
+        .info-panel h3 {
+            font-family: Georgia, serif;
+            font-size: 22px;
+            font-weight: normal;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 1.8;
+            border-bottom: 1px dashed rgba(110, 97, 83, 0.2);
+            padding-bottom: 20px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .info-list strong {
+            color: var(--accent-terracotta);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        /* Expanded Collapsible Agreement Section styles */
+        .agreement-disclosure {
+            background-color: var(--bg-creme);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .agreement-disclosure h4 {
+            font-family: Georgia, serif;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-size: 18px;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 12px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .legal-text {
+            font-size: 13px;
+            color: var(--text-dark);
+            margin-bottom: 18px;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent-terracotta);
+            line-height: 1.7;
+        }
+
+        .legal-text strong {
+            color: var(--accent-terracotta);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .legal-text.alert-block {
+            border-left-color: var(--alert-red);
+            background-color: rgba(164, 74, 57, 0.04);
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-right: 10px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .legal-text.alert-block strong {
+            color: var(--alert-red);
+        }
+
+        /* Structured Website Footer */
+        footer {
+            background-color: #f7f2e8;
+            border-top: 1px solid var(--border-line);
+            padding: 50px 20px;
+            margin-top: 80px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 6px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info a {
+            color: var(--accent-terracotta);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .social-media img {
+            transition: transform 0.2s;
+        }
+
+        .social-media img:hover {
+            transform: scale(1.1);
+        }
+
+        .newsletter {
+            max-width: 450px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .newsletter p {
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter input[type="email"] {
+            flex: 1;
+            padding: 12px;
+            background-color: var(--bg-creme);
+            border: 1px solid var(--border-line);
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .newsletter input[type="email"]:focus {
+            outline: none;
+            border-color: var(--accent-terracotta);
+        }
+
+        .newsletter button {
+            background-color: var(--text-dark);
+            color: var(--bg-creme);
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .newsletter button:hover {
+            background-color: var(--accent-terracotta);
+        }
+
+        .copyright {
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .info-panel { padding: 25px; }
+            .newsletter form { flex-direction: column; }
+            .newsletter button { padding: 12px; }
+        }
+    </style> 
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo"> Digicams Rental <span>by Rica</span></a>
+            <nav class="nav-links">
+                <a href="#inventory">The Cameras</a>
+                <a href="#how-to-rent">Rental Policy</a>
+                <a href="rental.html">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Aesthetic Hero Section -->
+    <div class="hero">
+        <h2>Digicam Rental</h2>
+        <h1>Capture the Nostalgia</h1>
+        <p>Going on vacation, exploring the beautiful views of Palawan, or coming to a special event? Rent classic, pocket-sized point-and-shoot digital cameras to catch stunning vintage vacation memories without needing complicated gear.</p>
+        
+        <div class="hero-images-container">
+            <img class="hero-img" src="images folder/cutee.jpg" alt="Vintage Camera Look 1">
+            <img class="hero-img" src="images folder/ysa baby.jpg" alt="Vintage Camera Look 2">
+            <img class="hero-img" src="images folder/rica.jpg" alt="Vintage Camera Look 3">
+            <img class="hero-img" src="images folder/sexy.jpg" alt="Vintage Camera Look 4">
+            <img class="hero-img" src="images folder/more sexy.jpg" alt="Vintage Camera Look 5">
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Camera Fleet Section -->
+        <section id="inventory">
+            <h2 class="section-title">Choose Your Camera</h2>
+            <div class="grid-container">
+
+                <!-- Sony Cyber-Shot Card -->
+                <div class="camera-card">
+                    <div class="camera-header">
+                        <p class="camera-brand">Sony</p>
+                        <h3 class="camera-title">CyberShot WX100</h3>
+                    </div>
+                    <div class="camera-img-box">
+                        <img src="images folder/Sony Cyber-shot.jpg" alt="Sony CyberShot WX100">
+                    </div>
+                    <ul class="camera-specs">
+                        <li>• 18.2 Megapixels</li>
+                        <li>• 10x Optical Zoom</li>
+                        <li>• Full HD Video Recording</li>
+                        <li>• Packed with Scene Modes/Filters</li>
+                        <li>• High Quality + Sharp Outputs</li>
+                    </ul>
+                    <div class="card-footer">
+                        <div class="price-tag">₱250 <span>/ DAY</span></div>
+                        <button class="btn-rent" onclick="location.href='Rental.html'">Book DM</button>
+                    </div>
+                </div>
+
+                <!-- Canon PowerShot Card -->
+                <div class="camera-card">
+                    <div class="camera-header">
+                        <p class="camera-brand">Canon</p>
+                        <h3 class="camera-title">PowerShot Sx260 HS</h3>
+                    </div>
+                    <div class="camera-img-box">
+                        <img src="images folder/Canpon.jpg" alt="Canon PowerShot Sx260 HS">
+                    </div>
+                    <ul class="camera-specs">
+                        <li>• 12.1 Megapixels</li>
+                        <li>• G7x Dupe Feel</li>
+                        <li>• 20x High-Zoom & Video</li>
+                        <li>• Versatile Warm Settings</li>
+                    </ul>
+                    <div class="card-footer">
+                        <div class="price-tag">₱350 <span>/ DAY</span></div>
+                        <button class="btn-rent" onclick="location.href='Rental.html'">Book DM</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Terms, Details, and Inclusions Section -->
+        <section id="how-to-rent">
+            <div class="info-panel">
+                <h3>How To Rent & Inclusions</h3>
+                <ul class="info-list">
+                    <li>
+                        <strong>✨ Inclusions:</strong><br>
+                        1GB/4GB SD Card, OTG Card Reader, Camera Pouch and Strap, Charger, Cleaning Cloth.
+                    </li>
+                    <li>
+                        <strong>🪪 Requirements:</strong><br>
+                        1 Valid Government ID to be held for the duration of the rental for security purposes.
+                    </li>
+                    <li>
+                        <strong>📅 Booking Process:</strong><br>
+                        Fill out the booking form with your details and rental dates. After submission, please DM us to confirm availability and finalize your reservation.
+                    </li>
+                </ul>
+
+                <!-- Contract Terms Integration Mapping photo_2026-06-01_20-33-24.jpg -->
+                <div class="agreement-disclosure">
+                    <h4>📝 Rental Terms & Conditions</h4>
+                    
+                    <div class="legal-text">
+                        <strong>1. Responsibility and Liability</strong>
+                        The renter agrees to handle the rented equipment with care and assumes full responsibility for its condition during the rental period[cite: 1]. Any loss, damage, or malfunction (excluding normal wear and tear) shall be shouldered by the renter[cite: 1].
+                    </div>
+
+                    <div class="legal-text">
+                        <strong>2. Rental Period</strong>
+                        The renter must pick up and return the equipment at the agreed date and time[cite: 1]. Failure to return on time will result in additional charges based on the agreed late fee[cite: 1].
+                    </div>
+
+                    <div class="legal-text">
+                        <strong>3. Security Deposit</strong>
+                        A refundable security deposit may be required prior to release of the equipment[cite: 1]. This will be returned upon inspection, provided no damage or loss is incurred[cite: 1]. Applicable for long-term rents[cite: 1].
+                    </div>
+
+                    <div class="legal-text">
+                        <strong>4. Condition of Equipment</strong>
+                        The renter acknowledges that the equipment is received in good working condition[cite: 1]. Any issues must be reported immediately upon receipt[cite: 1].
+                    </div>
+
+                    <div class="legal-text alert-block">
+                        <strong>5. Prohibited Use</strong>
+                        The renter agrees not to use the equipment for illegal activities, hazardous environments, or in ways that may cause damage beyond normal use[cite: 1].
+                    </div>
+
+                    <div class="legal-text alert-block">
+                        <strong>6. Non-Transferability</strong>
+                        The rented equipment must not be lent, subleased, or transferred to another person without prior consent from the owner[cite: 1].
+                    </div>
+
+                    <div class="legal-text alert-block">
+                        <strong>7. Loss or Theft</strong>
+                        In case of loss or theft, the renter must immediately inform the owner and is liable for full replacement cost of the equipment[cite: 1].
+                    </div>
+
+                    <div class="legal-text">
+                        <strong>8. Cancellation Policy</strong>
+                        Cancellations made less than 24 hours before the rental schedule may be subject to a cancellation fee[cite: 1].
+                    </div>
+
+                    <div class="legal-text">
+                        <strong>9. Extension of Rental</strong>
+                        Requests for extension must be made before the agreed return time and are subject to availability and additional charges[cite: 1].
+                    </div>
+
+                    <div class="legal-text">
+                        <strong>10. Inspection Upon Return</strong>
+                        All equipment will be inspected upon return[cite: 1]. Any damages found will be charged accordingly[cite: 1].
+                    </div>
+
+                    <div class="legal-text alert-block">
+                        <strong>⏰ Late Penalty Rates & Privacy Clause</strong>
+                        • A late penalty fee of ₱100 over the base daily rate will be charged for every day of delay, or ₱30 for every incremental hour.<br>
+                        • If the unit is not returned on time and there is reasonable suspicion of loss, theft, or intent to sell, the Owner reserves the explicit right to disclose personal info to proper authorities and social media platforms for recovery investigations.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Corrected & Structured Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="contact-info">
+                <p><strong>Address:</strong> Bunkhouse Sta Monica, Puerto Princesa City, Palawan</p>
+                <p><strong>Contact Us:</strong> 09456600849</p>
+                <p><strong>For DMs:</strong> <a href="https://www.facebook.com/share/1BHMEDLhuG/" target="_blank">Message for inquiries</a></p>
+            </div>
+            
+            <div class="social-media">
+                <a href="https://www.facebook.com/share/1YEPBDo1C9/" target="_blank">
+                    <img src="images folder/facebook.png" width="32" height="32" alt="Facebook Page">
+                </a>
+            </div>
+                
+            <div class="newsletter">
+                <p>Subscribe to our newsletter for updates and promotions:</p>
+                <form action="subscribe.php" method="post">
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <p class="copyright">&copy; 2026 PLWN Digicam Rental by Rica. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

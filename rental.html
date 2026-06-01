@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palawan Digicam Rental by Rica</title>
+    <style>
+        /* Beige & Earthy Retro Aesthetic Palette */
+        :root {
+            --bg-creme: #fdfaf4;       /* Soft warm linen cream background */
+            --bg-card: #f5eedf;        /* Sand tone for the container */
+            --text-dark: #2c251e;      /* Soft charcoal-brown for readability */
+            --text-muted: #6e6153;     /* Muted earth tone for subtitles */
+            --accent-terracotta: #b86b4d; /* Warm terracotta highlight */
+            --border-line: #e6dcce;    /* Soft dividing borders */
+            --alert-red: #a3483b;      /* Elegant clay-red for warnings */
+        }
+
+        body {
+            font-family: 'Courier New', Courier, Georgia, serif;
+            background-color: var(--bg-creme);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Fixed & Structured Header Layout */
+        header {
+            width: 100%;
+            background-color: var(--bg-creme);
+            border-bottom: 1px solid var(--border-line);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-terracotta);
+            font-style: italic;
+            text-transform: none;
+        }
+
+        .nav-links a {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-terracotta);
+        }
+
+        /* Form Container Box Styling */
+        .form-container {
+            background-color: var(--bg-card);
+            max-width: 650px;
+            width: 100%;
+            margin: 50px 20px 80px 20px;
+            padding: 45px 35px;
+            border-radius: 28px;
+            box-shadow: 0 16px 32px rgba(44, 37, 30, 0.05);
+            border: 2px solid var(--border-line);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            font-family: Georgia, serif;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-size: 28px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        h2 span {
+            color: var(--accent-terracotta);
+            font-style: italic;
+        }
+
+        p.subtitle {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-muted);
+            font-size: 13px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dark);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--bg-creme);
+            border: 1px solid var(--border-line);
+            border-radius: 10px;
+            color: var(--text-dark);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: all 0.25s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-terracotta);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(184, 107, 77, 0.08);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            background: var(--bg-creme);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border-line);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            font-weight: normal;
+            font-size: 13px;
+            cursor: default;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .checkbox-label input {
+            margin-top: 2px;
+            margin-right: 12px;
+            accent-color: var(--accent-terracotta);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+            line-height: 1.5;
+        }
+
+        /* Dynamic Contract Disclosure Section */
+        .policy-box {
+            background-color: var(--bg-creme);
+            border: 1px solid var(--border-line);
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .policy-box h4 {
+            font-family: Georgia, serif;
+            font-size: 15px;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            border-bottom: 1px dashed var(--border-line);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .policy-clause {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.6;
+            padding-left: 14px;
+            border-left: 2px solid var(--accent-terracotta);
+        }
+
+        .policy-clause strong {
+            color: var(--text-dark);
+        }
+
+        .policy-clause.warning {
+            border-left-color: var(--alert-red);
+            color: var(--text-dark);
+            background-color: rgba(163, 72, 59, 0.04);
+            padding: 10px 14px;
+            border-radius: 4px;
+        }
+
+        .policy-clause.warning strong {
+            color: var(--alert-red);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.2s ease;
+        }
+
+        button[type="submit"] {
+            background-color: var(--text-dark);
+            color: var(--bg-creme);
+            border: 1px solid var(--text-dark);
+        }
+
+        button[type="submit"]:hover {
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        button[type="reset"] {
+            background-color: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+        }
+
+        button[type="reset"]:hover {
+            border-color: var(--text-dark);
+            color: var(--text-dark);
+        }
+
+        .info-note {
+            margin-top: 25px;
+            border-top: 1px dashed var(--border-line);
+            padding-top: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .info-note strong {
+            color: var(--accent-terracotta);
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .form-container {
+                padding: 30px 20px;
+                margin: 25px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar Layout Fixed -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo"> Digicam Rental<span>by Rica</span></a>
+            <nav class="nav-links">
+                <a href="index.html">The Cameras</a>
+                <a href="index.html#rental-policy">Rental Policy</a>
+                <a href="rental.html">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Unified Form Display Container -->
+    <div class="form-container">
+        <h2>Digicam Rental <span>by Rica</span></h2>
+        <p class="subtitle">CAPTURE THE NOSTALGIA:<br>RENT CLASSIC POINT-AND-SHOOTS!</p>
+        
+        <form action="#" method="POST">
+            <!-- Renter Information -->
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="full_name" required placeholder="Your Full Name">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone / Social Handle</label>
+                    <input type="text" id="phone" name="phone" required placeholder="@Facebook_handle or phone">
+                </div>
+                <div class="form-group">
+                    <label for="govId">Government ID Type</label>
+                    <input type="text" id="govId" name="gov_id" required placeholder="e.g., Passport, Driver's ID">
+                </div>
+            </div>
+
+            <!-- Gear Selection directly utilizing specs from photo_2026-06-01_16-46-09_2.jpg -->
+            <div class="form-group">
+                <label for="cameraModel">Select Digicam Companion</label>
+                <select id="cameraModel" name="camera_model" required>
+                    <option value="" disabled selected>-- Choose a Travel Digicam --</option>
+                    <option value="sony-wx100">Sony CyberShot WX100 — ₱250 / Day</option>
+                    <option value="canon-sx260">Canon PowerShot Sx260 HS — ₱350 / Day</option>
+                </select>
+            </div>
+
+            <!-- Rental Inclusions Checkboxes -->
+            <div class="form-group">
+                <label>Standard Package Inclusions</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label"><input type="checkbox" checked disabled> 1GB / 4GB SD Card Included</label>
+                    <label class="checkbox-label"><input type="checkbox" checked disabled> OTG Card Reader Included</label>
+                    <label class="checkbox-label"><input type="checkbox" checked disabled> Camera Pouch, Strap, & Charger Included</label>
+                    <label class="checkbox-label"><input type="checkbox" checked disabled> Lens Cleaning Cloth Included</label>
+                </div>
+            </div>
+
+            <!-- Rental Dates -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="pickupDate">Start Date</label>
+                    <input type="date" id="pickupDate" name="pickup_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnDate">End Date</label>
+                    <input type="date" id="returnDate" name="return_date" required>
+                </div>
+            </div>
+
+            <!-- Special Instructions -->
+            <div class="form-group">
+                <label for="notes">Vacation Notes / Special Requests</label>
+                <textarea id="notes" name="notes" placeholder="Tell us about your vacation destination or timeline..."></textarea>
+            </div>
+
+            <!-- Legal Terms Block integrated from Rent Agreement.docx -->
+            <div class="policy-box">
+                <h4>Agreement Terms & Responsibility</h4>
+                
+                <div class="policy-clause">
+                    <strong>Care & Safety:</strong> I AGREE to take proper care of the digital camera unit and follow rules and reminders set by the owner[cite: 1].
+                </div>
+                
+                <div class="policy-clause">
+                    <strong>ID Collateral:</strong> I AGREE to provide one (1) valid ID to be held by the owner for the duration of the rental for security purposes[cite: 1].
+                </div>
+
+                <div class="policy-clause">
+                    <strong>Damages & Losses:</strong> I AGREE to pay for any repairs due to damages or loss of accessories caused during my rental, and the full replacement value if the unit is lost or broken beyond repair[cite: 1].
+                </div>
+
+                <div class="policy-clause warning">
+                    <strong>⏰ Late Delays:</strong> I AGREE to return the unit by the agreed time and date. I understand that a late penalty fee of <strong>₱100 will be added to the rental rate for every day of delay and ₱30 for every hour</strong>[cite: 1].
+                </div>
+
+                <div class="policy-clause warning">
+                    <strong>🔒 Non-Return Clause:</strong> If I fail to return the unit on the agreed date and there is reasonable suspicion of loss, theft, or intent to sell, I AGREE that the Owner has the right to disclose my personal information to authorities and on <strong>social media platforms</strong> for recovery purposes[cite: 1].
+                </div>
+            </div>
+
+            <!-- Form Buttons -->
+            <div class="btn-group">
+                <button type="submit">Submit Request</button>
+                <button type="reset">Clear Fields</button>
+            </div>
+
+            <!-- Requirements & Booking Policy Footnote -->
+            <div class="info-note">
+                 <strong>Requirements:</strong> 1 Valid Government ID is strictly required upon rental validation[cite: 1].<br>
+                 <strong>Booking:</strong> This form initiates your inquiry. Please message us via DM to confirm availability and fully reserve your specific vacation date![cite: 1]
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
